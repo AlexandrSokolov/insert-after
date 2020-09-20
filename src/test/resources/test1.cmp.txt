@@ -1,0 +1,14 @@
+line1
+line2
+  <tag1>
+  ??
+    someValue$
+    <anotherTag />
+  </tag1>
+  <tag1>
+  ??
+    someAnotherValue$
+    <anotherTag2 />
+  </tag1>
+  <tag2>&%$§"</tag2>
+line3
