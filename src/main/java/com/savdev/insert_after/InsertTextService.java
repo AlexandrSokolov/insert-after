@@ -16,17 +16,19 @@ public class InsertTextService {
     final String text2Search,
     final String text2Insert) {
     String original = contentFromPath(filePath);
-    int indexOfSearchLine = original.indexOf(text2Search);
-    if (indexOfSearchLine != -1) {
-      StringBuilder sb = new StringBuilder(original);
-      sb.insert(indexOfSearchLine + text2Search.length(), "\n");
-      sb.insert(indexOfSearchLine + text2Search.length() + 1, text2Insert);
-      return sb.toString();
-    } else {
-      StringBuilder sb = new StringBuilder(original);
-      sb.append("\n");
-      sb.append(text2Insert);
-      return sb.toString();
+    //if text for insert is already in the original file, nothing will be inserted
+    if (!original.contains(text2Insert)) {
+      int indexOfSearchLine = original.indexOf(text2Search);
+      if (indexOfSearchLine != -1) {
+        StringBuilder sb = new StringBuilder(original);
+        sb.insert(indexOfSearchLine + text2Search.length(), "\n");
+        sb.insert(indexOfSearchLine + text2Search.length() + 1, text2Insert);
+        return sb.toString();
+      } else {
+        return original + "\n" + text2Insert;
+      }
+    } else  {
+      return original;
     }
   }
 

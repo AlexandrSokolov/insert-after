@@ -43,6 +43,16 @@ public class InsertTextServiceTest {
       contentFromTestPath(EXPECTED_FINAL_FILE_WIHOUT_SEARCH));
   }
 
+  @Test
+  public void testSearchAndInsertBlocksExist() {
+    Assert.assertEquals(
+      service.insertText(
+        testFullPath(ORIGINAL_FILE),
+        contentFromTestPath(SEARCH_CONTENT_FILE),
+        contentFromTestPath(SEARCH_CONTENT_FILE)),
+      contentFromTestPath(ORIGINAL_FILE));
+  }
+
   private String contentFromTestPath(String filePath){
     try {
       String absolutePath = testFullPath(filePath);

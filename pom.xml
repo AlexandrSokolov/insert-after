@@ -4,7 +4,7 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>com.savdev.insert_after</groupId>
-  <artifactId>insert-after</artifactId>
+  <artifactId>insert-unique-after</artifactId>
   <packaging>jar</packaging>
   <version>1.0.0</version>
   <name>The command line application to insert a block of text after another block</name>
