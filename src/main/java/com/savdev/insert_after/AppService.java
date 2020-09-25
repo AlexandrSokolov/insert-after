@@ -2,6 +2,7 @@ package com.savdev.insert_after;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.URISyntaxException;
 import java.nio.charset.StandardCharsets;
 import java.util.Optional;
 
@@ -75,8 +76,21 @@ public class AppService {
       // oops, something went wrong
       System.err.println( "Parsing failed.  Reason: " + exp.getMessage() );
       HelpFormatter formatter = new HelpFormatter();
-      formatter.printHelp( "insert-unique-after.jar", options );
+      formatter.printHelp( currentFileName(), options );
       return Optional.empty();
+    }
+  }
+
+  private String currentFileName() {
+    try {
+      return new File(AppService.class
+        .getProtectionDomain()
+        .getCodeSource()
+        .getLocation()
+        .toURI())
+        .getName();
+    } catch (URISyntaxException e) {
+      throw new RuntimeException(e);
     }
   }
 }
