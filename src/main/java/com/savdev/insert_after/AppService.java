@@ -75,7 +75,7 @@ public class AppService {
       // oops, something went wrong
       System.err.println( "Parsing failed.  Reason: " + exp.getMessage() );
       HelpFormatter formatter = new HelpFormatter();
-      formatter.printHelp( "insert-after.jar", options );
+      formatter.printHelp( "insert-unique-after.jar", options );
       return Optional.empty();
     }
   }
