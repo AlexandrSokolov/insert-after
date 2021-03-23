@@ -52,7 +52,7 @@ public class AppService {
     options.addOption(
       Option.builder()
             .argName("block of text to search")
-            .required()
+            .optionalArg(true)
             .hasArg()
             .longOpt(INSERT_AFTER_OPTION)
             .desc("block of text to search to insert after it")

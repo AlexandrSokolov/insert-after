@@ -13,8 +13,9 @@ Workflow:
         2.2. Otherwise, the new line symbol (depends on OS) with the insert block of text 
             are inserted immediately after the search block of text.
 
-Usage:
+Note: the tool does not insert a line break between the search text, and the text for the insert.
 
+The original file:
 ```
 $ cat tmp/test1.txt 
 line1
@@ -25,7 +26,9 @@ line2
     <anotherTag />
   </tag1>
   <tag2>&%$§"</tag2>
-
+```
+Usage:
+```
 $  java -jar insert-unique-after.jar
 Parsing failed.  Reason: Missing required options: path, insert-after, insert-text
 usage: insert-unique-after.jar
@@ -41,11 +44,15 @@ $  java -jar insert-unique-after.jar \
     someValue$
     <anotherTag />
   </tag1>" \
-  --insert-text "<tag1>
+  --insert-text "
+  <tag1>
   ??
     someAnotherValue$
     <anotherTag2 />
   </tag1>"
+```
+Result:  
+```  
 $ cat tmp/test1.txt 
 line1
 line2

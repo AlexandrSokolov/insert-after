@@ -4,7 +4,6 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.net.URL;
 import java.nio.charset.StandardCharsets;
 
 import org.apache.commons.io.IOUtils;
@@ -18,15 +17,16 @@ public class InsertTextService {
     String original = contentFromPath(filePath);
     //if text for insert is already in the original file, nothing will be inserted
     if (!original.contains(text2Insert)) {
-      int indexOfSearchLine = original.indexOf(text2Search);
-      if (indexOfSearchLine != -1) {
-        StringBuilder sb = new StringBuilder(original);
-        sb.insert(indexOfSearchLine + text2Search.length(), "\n");
-        sb.insert(indexOfSearchLine + text2Search.length() + 1, text2Insert);
-        return sb.toString();
-      } else {
-        return original + "\n" + text2Insert;
+      if (text2Search != null) {
+        int indexOfSearchLine = original.indexOf(text2Search);
+        if (indexOfSearchLine != -1) {
+          StringBuilder sb = new StringBuilder(original);
+          sb.insert(indexOfSearchLine + text2Search.length(), text2Insert);
+          return sb.toString();
+        }
       }
+      //text2Search is null, or is not found
+      return original + text2Insert;
     } else  {
       return original;
     }
